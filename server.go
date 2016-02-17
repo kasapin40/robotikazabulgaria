@@ -32,7 +32,7 @@ func main() {
 	http.Handle("/images/", http.StripPrefix("/images/", http.FileServer(http.Dir("images"))))
 	http.Handle("/docs/", http.StripPrefix("/docs/", http.FileServer(http.Dir("work_dir/docs"))))
 	http.HandleFunc("/", handler)
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServeTLS(":8041", "cert.crt", "cert.key", nil)
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
